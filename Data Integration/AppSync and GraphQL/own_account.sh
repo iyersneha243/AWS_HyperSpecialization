@@ -9,7 +9,7 @@
 
 echo 'Starting CodeCommit CloudFormation stack'
 aws cloudformation create-stack \
-  --stack-name CodeCommit \
+  --stack-name CodeCommitsneha \
   --template-body file://codecommit.yaml \
   --parameters \
       ParameterKey=FrontendRepoName,ParameterValue=AnyCompanyReads-frontend \
@@ -19,13 +19,13 @@ aws cloudformation create-stack \
       ParameterKey=S3BackendCodeKey,ParameterValue=''
 
 echo 'Initializing git'
-git config --global user.name "Workshop User"
-git config --global user.email workshop.user@amazon.com
+git config --global user.name "iyersneha243"
+git config --global user.email iyersneha243@gmail.com
 git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
 
 echo 'Waiting for CodeCommit CloudFormation stack to complete'
-aws cloudformation wait stack-create-complete --stack-name CodeCommit
+aws cloudformation wait stack-create-complete --stack-name CodeCommitsneha
 echo 'CodeCommit stack complete'
 
 echo 'Cloning Repository'
@@ -58,7 +58,7 @@ cd ..
 
 echo 'Starting Cloud9 CloudFormation stack'
 aws cloudformation create-stack \
-  --stack-name Cloud9 \
+  --stack-name Cloud9sneha \
   --template-body file://cloud9.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --parameters \
@@ -66,7 +66,7 @@ aws cloudformation create-stack \
       ParameterKey=InstanceName,ParameterValue=appsync-workshop 
 
 echo 'Waiting for Cloud9 stack to complete. Can take around 5 minutes, polling every 30 seconds'
-aws cloudformation wait stack-create-complete --stack-name Cloud9
+aws cloudformation wait stack-create-complete --stack-name Cloud9sneha
 echo 'Cloud9 stack complete'
 
 echo -e '\n\nSetup is complete\n\n'
